@@ -54,6 +54,7 @@ public class SecurityConfig {
             )
             .authorizeHttpRequests(auth -> auth
             	    .requestMatchers("/api/auth/**").permitAll()
+            	    .requestMatchers(HttpMethod.POST, "/api/appointments").authenticated()
             	    .requestMatchers(HttpMethod.POST, "/api/staff").permitAll() // 👈 bootstrap
             	    .anyRequest().authenticated()
             	)

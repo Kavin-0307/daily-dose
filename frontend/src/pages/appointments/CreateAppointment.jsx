@@ -27,6 +27,17 @@ function CreateAppointment() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // ✅ frontend guards
+    if (!staffId || !patientId) {
+      setError("Please select both staff and patient");
+      return;
+    }
+
+    if (new Date(appointmentTime) <= new Date()) {
+      setError("Appointment time must be in the future");
+      return;
+    }
+
     try {
       setLoading(true);
       setError("");
@@ -35,13 +46,14 @@ function CreateAppointment() {
         staffId: Number(staffId),
         patientId: Number(patientId),
         appointmentTime,
-        reason
+        reason,
       });
 
-      navigate("/appointments");
+      navigate(`/staff/${staffId}/appointments`
+);
     } catch (err) {
       console.error(err);
-      setError(err.response?.data?.message || "Failed to create appointment");
+      setError("Failed to create appointment");
     } finally {
       setLoading(false);
     }
@@ -58,35 +70,46 @@ function CreateAppointment() {
       <form onSubmit={handleSubmit}>
         <div className="receipt-card receipt-form">
 
-          <select value={patientId} onChange={e => setPatientId(e.target.value)} required>
+          {/* Patient */}
+          <select
+            value={patientId}
+            onChange={(e) => setPatientId(e.target.value)}
+            required
+          >
             <option value="">Select Patient</option>
-            {patients.map(p => (
-              <option key={p.patientId} value={p.patientId}>
+            {patients.map((p) => (
+              <option key={p.id} value={p.id}>
                 {p.patientName}
               </option>
             ))}
           </select>
 
-          <select value={staffId} onChange={e => setStaffId(e.target.value)} required>
+          {/* Staff */}
+          <select
+            value={staffId}
+            onChange={(e) => setStaffId(e.target.value)}
+            required
+          >
             <option value="">Select Staff</option>
-            {staffList.map(s => (
-              <option key={s.staffId} value={s.staffId}>
-                {s.staffName}
-              </option>
-            ))}
+            {staffList.map((s) => (
+  <option key={s.staffId} value={s.staffId}>
+    {s.staffName}
+  </option>
+))}
+
           </select>
 
           <input
             type="datetime-local"
             value={appointmentTime}
-            onChange={e => setAppointmentTime(e.target.value)}
+            onChange={(e) => setAppointmentTime(e.target.value)}
             required
           />
 
           <textarea
             placeholder="Reason for appointment"
             value={reason}
-            onChange={e => setReason(e.target.value)}
+            onChange={(e) => setReason(e.target.value)}
             rows={3}
           />
 
@@ -94,7 +117,7 @@ function CreateAppointment() {
             <button
               type="submit"
               className="receipt-primary-btn"
-              disabled={loading}
+              disabled={loading || !staffList.length || !patients.length}
             >
               {loading ? "Saving..." : "Create Appointment"}
             </button>

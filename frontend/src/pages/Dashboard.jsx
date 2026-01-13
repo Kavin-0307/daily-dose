@@ -59,6 +59,15 @@ function Dashboard(){
         ➢Manage staff
         <br/>➢Access the patients by staff
       </button>
+   <button
+  className="dashboard-button"
+  onClick={() => navigate("/appointments")}
+>
+  Appointments<br/>
+  ➢Create a new Appointment<br/>
+  ➢View All Appointments
+</button>
+
       </div>
         </section>
     );

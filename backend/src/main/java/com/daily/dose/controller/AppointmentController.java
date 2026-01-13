@@ -41,6 +41,12 @@ public class AppointmentController {
                 appointmentService.getByStaff(staffId)
         );
     }
+    @GetMapping("/appointments")
+    public ResponseEntity<List<AppointmentResponseDTO>> getAll() {
+    	 System.out.println(">>> ENTERED GET /api/appointments");
+        return ResponseEntity.ok(appointmentService.getAll());
+    }
+
     @GetMapping("/patients/{patientId}/appointments")
     public ResponseEntity<List<AppointmentResponseDTO>> getForPatient(
             @PathVariable Long patientId

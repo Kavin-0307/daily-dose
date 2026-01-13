@@ -95,6 +95,13 @@ function StaffList() {
 >
   View Patients
 </button>
+<button
+  className="receipt-secondary-btn"
+  onClick={() => navigate(`/staff/${s.staffId}/appointments`)}
+>
+  View Appointments
+</button>
+
 
               {s.staffEmail !== currentEmail && (
                 <button

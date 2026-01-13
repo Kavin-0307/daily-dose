@@ -5,14 +5,10 @@ const appointmentApi = {
     const res = await api.post(`/appointments`, payload);
     return res.data;
   },
-
-  // ✅ FIXED
   getAppointmentsByStaff: async (staffId) => {
     const res = await api.get(`/staff/${staffId}/appointments`);
     return res.data;
   },
-
-  // ✅ FIXED
   getAppointmentsByPatient: async (patientId) => {
     const res = await api.get(`/patients/${patientId}/appointments`);
     return res.data;
@@ -21,6 +17,13 @@ const appointmentApi = {
   cancelAppointment: async (id) => {
     await api.put(`/appointments/${id}/cancel`);
   },
+  getAllAppointments: async () => {
+  console.log("TOKEN:", localStorage.getItem("token"));
+  const res = await api.get("/appointments");
+  return res.data;
+},
+
+
 };
 
 export default appointmentApi;

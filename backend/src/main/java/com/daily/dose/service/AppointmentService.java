@@ -33,6 +33,7 @@ public class AppointmentService {
         this.patientRepository = patientRepository;
         this.staffRepository = staffRepository;
     }
+    
     public AppointmentResponseDTO create(AppointmentRequestDTO dto) {
 
     	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -131,6 +132,13 @@ public class AppointmentService {
         // STAFF can only see their own appointments
         return loggedInStaff;
     }
+    public List<AppointmentResponseDTO> getAll() {
+        return appointmentRepository.findAll()
+            .stream()
+            .map(this::toDTO)
+            .toList();
+    }
+
     private AppointmentResponseDTO toDTO(Appointment a) {
         return new AppointmentResponseDTO(
                 a.getAppointmentId(),

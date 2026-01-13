@@ -15,6 +15,7 @@ import CreateStaff from "./pages/staff/CreateStaff";
 import StaffPatients from "./pages/staff/StaffPatients";
 import CreateAppointment from "./pages/appointments/CreateAppointment";
 import StaffAppointments from "./pages/appointments/StaffAppointments";
+import Appointments from "./pages/appointments/Appointments";
 function AppRoutes() {
   return (
     <Routes>
@@ -39,7 +40,15 @@ function AppRoutes() {
       <CreateStaff />
     </ProtectedRoute>
   }
+/><Route
+  path="/appointments"
+  element={
+    <ProtectedRoute>
+      <Appointments />
+    </ProtectedRoute>
+  }
 />
+
 
       <Route
         path="/patients"
