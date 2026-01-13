@@ -1,0 +1,125 @@
+.receipt {
+  min-height: 100vh;
+  padding: 32px;
+  margin-bottom: 28px;
+
+  background-color: #f2eadf;
+  font-family: "Open Sauce Sans", system-ui, sans-serif;
+}
+
+.receipt-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 28px 32px;
+  margin-bottom: 28px;
+
+  background-color: #ffffff;
+  border-radius: 16px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.receipt-header-text h1 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+  color: #4b2913; /* brand brown */
+}
+
+.receipt-header-text p {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #6b7280;
+}
+.receipt-primary-btn {
+  padding: 14px 28px;
+
+  background-color: #038442; /* brand green */
+  color: #ffffff;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  border: none;
+  border-radius: 999px;
+
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.receipt-primary-btn:hover {
+  background-color: #2ea46f;
+  transform: translateY(-1px);
+}
+.receipt-search {
+  width: 100%;
+  padding: 14px 18px;
+  font-size: 15px;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  background-color: #ffffff;
+  outline: none;
+}
+
+.receipt-search:focus {
+  border-color: #038442;
+}
+
+.receipt-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.receipt-card {
+  padding: 22px;
+
+  background-color: #ffffff;
+  border-radius: 16px;
+
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.receipt-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+.receipt-meta {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+.receipt-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.receipt-form input,
+.receipt-form textarea,
+.receipt-form select {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.receipt-form-row {
+  grid-column: span 2;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+
